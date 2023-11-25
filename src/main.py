@@ -17,7 +17,6 @@ SERVICE_NAME = "task-service"
 tracer = Tracer()
 logger = Logger(service=SERVICE_NAME)
 metrics = Metrics(service=SERVICE_NAME, namespace="TaskService")
-metrics.set_default_dimensions(environment="PROD")
 app = APIGatewayRestResolver()
 
 TABLE_NAME = os.getenv("TABLE_NAME")

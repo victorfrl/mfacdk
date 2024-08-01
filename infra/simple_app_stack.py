@@ -21,7 +21,7 @@ class BackendStack(CloudStack):
         _layer_powertools = LayerVersion.from_layer_version_arn(
             self,
             "PowertoolsLayer",
-            "arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPythonV2-Arm64:47",
+            f"arn:aws:lambda:{self.region}:017000801446:layer:AWSLambdaPowertoolsPythonV2-Arm64:77",
         )
 
         _function = LambdaFunction(
@@ -40,6 +40,7 @@ class BackendStack(CloudStack):
             "ApiGateway",
             rest_api_name="MyApiGateway",
             default_cors_preflight_options=aws_apigateway.CorsOptions(
+                allow_headers=aws_apigateway.Cors.DEFAULT_HEADERS,
                 allow_origins=cdk.aws_apigateway.Cors.ALL_ORIGINS,
                 allow_methods=aws_apigateway.Cors.ALL_METHODS,
             ),

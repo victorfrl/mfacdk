@@ -1,9 +1,13 @@
 import Task from "../interfaces/Task";
 
-const API_URL: string = process.env.REACT_APP_BACKEND_ENDPOINT_URL + "/items";
+const API_URL: string = process.env.REACT_APP_BACKEND_ENDPOINT_URL + "items";
 
 export async function getTasks(): Promise<Task[]> {
-  const data = await fetch(API_URL);
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  }
+  const data = await fetch(API_URL, requestOptions);
   return await data.json();
 }
 

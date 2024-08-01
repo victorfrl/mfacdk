@@ -31,7 +31,6 @@ class LambdaFunction(aws_lambda.Function):
             layers: typing.Optional[typing.Sequence[aws_lambda.ILayerVersion]] = None,
             log_retention: typing.Optional[aws_logs.RetentionDays] = consts.DEFAULT_LOG_RETENTION_IN_DAYS,
             memory_size: typing.Optional[int] = consts.DEFAULT_LAMBDA_MEMORY,
-            reserved_concurrent_executions: typing.Optional[int] = consts.DEFAULT_LAMBDA_RESERVED_CONCURRENCY,
             timeout: typing.Optional[Duration] = consts.DEFAULT_LAMBDA_TIMEOUT_IN_SECONDS,
     ):
         super().__init__(
@@ -45,7 +44,6 @@ class LambdaFunction(aws_lambda.Function):
             layers=layers,
             log_retention=log_retention,
             memory_size=memory_size,
-            reserved_concurrent_executions=reserved_concurrent_executions,
             timeout=timeout,
         )
         Tags.of(self).add("DEMO_CDK", id)
